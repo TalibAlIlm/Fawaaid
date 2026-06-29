@@ -593,6 +593,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,
 }
 
 /* ════════════ CLEAN · MINIMAL THEME ════════════ */
+.lang-tog{display:inline-flex;border:1px solid var(--sb);border-radius:8px;overflow:hidden;background:rgba(255,255,255,.02);}
+.lang-tog button{font-family:var(--mono);font-size:11px;letter-spacing:.05em;font-weight:600;padding:7px 11px;background:none;border:none;color:var(--sm);cursor:pointer;transition:background .18s,color .18s;}
+.lang-tog button.active{background:var(--g1);color:#1A1206;}
+.lang-tog button:not(.active):hover{color:var(--st);background:var(--gw);}
+.ob-lang,.lang-tog.ob-lang{position:absolute;top:16px;right:16px;z-index:5;}
+.ob-box{position:relative;}
 .orn,.rule-svg,.fo{display:none!important;}
 .doc-head{margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid rgba(201,168,92,.16);}
 .doc-foot{margin-top:30px;}
@@ -617,6 +623,26 @@ a:focus-visible,button:focus-visible,input:focus-visible,
 body.is-mobile .lib-body{padding:20px 16px 88px;}
 body.is-mobile .a4{box-shadow:0 8px 26px -18px rgba(0,0,0,.6);}
 body.is-mobile .fab-add{box-shadow:0 6px 18px -8px rgba(0,0,0,.5);}
+/* ───────────── GLASSY surfaces ───────────── */
+.lib-head{background:linear-gradient(180deg,rgba(22,34,26,.55),rgba(12,19,14,.42));
+  -webkit-backdrop-filter:blur(22px) saturate(1.5);backdrop-filter:blur(22px) saturate(1.5);
+  border-bottom:1px solid rgba(201,168,92,.16);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 10px 30px -18px rgba(0,0,0,.7);}
+.edt-bar{background:linear-gradient(180deg,rgba(26,38,29,.6),rgba(14,21,16,.48));
+  -webkit-backdrop-filter:blur(20px) saturate(1.4);backdrop-filter:blur(20px) saturate(1.4);
+  border-bottom:1px solid rgba(201,168,92,.14);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 4px 18px -10px rgba(0,0,0,.5);}
+.sidebar{background:linear-gradient(168deg,rgba(24,36,28,.5),rgba(13,20,15,.4));
+  -webkit-backdrop-filter:blur(20px) saturate(1.3);backdrop-filter:blur(20px) saturate(1.3);
+  border-right:1px solid rgba(201,168,92,.12);}
+.ob-wrap{background:rgba(8,12,9,.66);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);}
+.ob-box{background:linear-gradient(168deg,rgba(30,42,33,.62),rgba(15,22,16,.5));
+  -webkit-backdrop-filter:blur(26px) saturate(1.4);backdrop-filter:blur(26px) saturate(1.4);
+  border:1px solid rgba(201,168,92,.16);border-top:2px solid var(--g1);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 40px 100px -30px rgba(0,0,0,.75);}
+/* mobile drawer: more opaque so text stays legible over content behind */
+body.is-mobile .sidebar{background:linear-gradient(168deg,rgba(20,30,24,.86),rgba(12,18,14,.84));
+  -webkit-backdrop-filter:blur(24px) saturate(1.3);backdrop-filter:blur(24px) saturate(1.3);}
 </style>
 </head>
 <body>
@@ -624,12 +650,13 @@ body.is-mobile .fab-add{box-shadow:0 6px 18px -8px rgba(0,0,0,.5);}
 <!-- ── ONBOARDING ── -->
 <div class="ob-wrap" id="ob-wrap">
   <div class="ob-box">
+    <div class="lang-tog" id="lang-tog-ob"><button type="button" data-l="en">EN</button><button type="button" data-l="de">DE</button></div>
+
     <div class="ob-hero">
       <div class="ob-hexrow">
-        <span class="ob-mark"><svg viewBox="0 0 24 24" fill="none">
-          <path d="M12 2 L18 16 L12 21 L6 16 Z" stroke="#C9A85C" stroke-width="1.3" stroke-linejoin="round" fill="rgba(201,168,92,.08)"/>
-          <line x1="12" y1="7" x2="12" y2="17" stroke="#C9A85C" stroke-width="1.1"/>
-          <circle cx="12" cy="13" r="1.4" fill="#C9A85C"/>
+        <span class="ob-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A85C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16.4 3.5a2.12 2.12 0 0 1 3 3L8 18l-4 1 1-4 11.4-11.5Z" fill="rgba(201,168,92,.1)"/>
+          <line x1="14.4" y1="5.5" x2="18.4" y2="9.5"/>
         </svg></span>
       </div>
       <div class="ob-appname">Fawāid</div>
@@ -664,14 +691,15 @@ body.is-mobile .fab-add{box-shadow:0 6px 18px -8px rgba(0,0,0,.5);}
 <div id="lib" class="view off">
   <div class="lib-head">
     <div class="lib-logo">
-      <span class="lib-mark"><svg class="lib-hex" viewBox="0 0 24 24" fill="none">
-        <path d="M12 2 L18 16 L12 21 L6 16 Z" stroke="#C9A85C" stroke-width="1.4" stroke-linejoin="round" fill="rgba(201,168,92,.08)"/>
-        <line x1="12" y1="7" x2="12" y2="17" stroke="#C9A85C" stroke-width="1.2"/>
-        <circle cx="12" cy="13" r="1.4" fill="#C9A85C"/>
+      <span class="lib-mark"><svg class="lib-hex" viewBox="0 0 24 24" fill="none" stroke="#C9A85C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16.4 3.5a2.12 2.12 0 0 1 3 3L8 18l-4 1 1-4 11.4-11.5Z" fill="rgba(201,168,92,.1)"/>
+        <line x1="14.4" y1="5.5" x2="18.4" y2="9.5"/>
       </svg></span>
       <div><div class="lib-title">Fawāid</div><div class="lib-sub">Islamic Study Notes</div></div>
     </div>
     <div class="lib-acts">
+      <div class="lang-tog" id="lang-tog"><button type="button" data-l="en">EN</button><button type="button" data-l="de">DE</button></div>
+
       <button class="btn-icon btn-pdf" id="btn-export-pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"/><rect x="4" y="9" width="16" height="8" rx="1"/><path d="M7 17h10v4H7z"/></svg>Export All as PDF</button>
       <button class="btn-icon" id="btn-export"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M5 21h14"/></svg>Export Backup</button>
       <button class="btn-icon" id="btn-import"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V9"/><path d="M7 13l5-5 5 5"/><path d="M5 3h14"/></svg>Import Backup</button>
@@ -862,6 +890,95 @@ body.is-mobile .fab-add{box-shadow:0 6px 18px -8px rgba(0,0,0,.5);}
 <script>
 'use strict';
 
+/* ════════════════ i18n (EN / DE) ════════════════ */
+var LANG='en';
+try{ var _sl=localStorage.getItem('fawaaid-lang'); if(_sl==='en'||_sl==='de') LANG=_sl;
+     else if((navigator.language||'en').slice(0,2)==='de') LANG='de'; }catch(_){}
+const T={
+ en:{tagline:"Islamic Study Notes",
+  obWrite:"Write & organise", obReview:"Review & remember", obBackup:"Back up your notes",
+  obWriteP:'Four colour-coded blocks — <strong style="color:#D4A015;">Āyah</strong>, <strong style="color:#3A9858;">Ḥadīth</strong>, <strong style="color:#4878C8;">Athar</strong>, Note — on printable A4 pages.',
+  obReviewP:"Spaced repetition schedules each note for review before you forget.",
+  obBackupP:'Notes live in this browser only — <strong>export a backup</strong> regularly.',
+  begin:"Begin Studying", obNote:"Reopen this guide anytime via the About button in the library.",
+  exportPdf:"Export All as PDF", exportBackup:"Export Backup", importBackup:"Import Backup", about:"About", newDoc:"New Document",
+  searchPh:"Search by title, author, chapter, science, or text…",
+  lsWarn:'Notes are stored in this browser only — <strong>Export Backup</strong> regularly to avoid data loss.',
+  back:"← Library", done:"Done",
+  secDoc:"Document", secTypes:'Note Types &nbsp;·&nbsp; click or Alt+key', secActions:"Actions", secShort:"Shortcuts",
+  fTitle:"Book Title", fAuthor:"Author", fChapter:"Chapter / Section", fLayout:"First Page Layout", fPageNum:"Which page number is this?",
+  phTitle:"e.g. Kitāb at-Tawḥīd", phAuthor:"e.g. Ibn ʿAbd al-Wahhāb", phChapter:"e.g. Chapter 1",
+  pgTitle:"Title Page", pgTitleSub:"Ornament header", pgCont:"Continuation", pgContSub:"Minimal header",
+  lsAyah:"Quranic Verse", lsHadith:"Prophetic Narration", lsAthar:"Scholar Commentary", lsNote:"Personal Analysis", lsTitle:"Chapter / Part heading",
+  active:"Active:\u00a0", addBlock:"Add Block", printPdf:"Print / Save as PDF", drTags:"Sciences / Tags", drReview:"Mark as Reviewed",
+  scNew:"New block", scAdd:"Add block (anywhere)", scBreak:"Line break", scDel:"Delete empty", scReorder:"Reorder", scCycle:"Cycle type (mouse)",
+  sbFoot:"Alt = Option on Mac · بارك الله فيك",
+  phDocTitle:"Book Title", phDocAuthor:"Author", phDocChapter:"Chapter",
+  tagTtl:"Which Islamic sciences does this document cover?", tagSub:"Select all that apply — you can edit this anytime using the ⟐ Sciences button.",
+  tagSkip:"Skip for now", tagSave:"Save Sciences →",
+  revQ:"How well did you retain this material?", revInfoFirst:"First review — rate your confidence honestly.",
+  rForgot:"Forgot", rHard:"Hard", rGood:"Good", rEasy:"Easy", cancel:"Cancel", page:"Page",
+  saving:"Saving…", saved:"Saved", unsaved:"Unsaved",
+  sciOne:"Science", sciMany:"Sciences", blockOne:"block", blockMany:"blocks",
+  reviewOverdue:"Overdue", reviewDueToday:"Review Due Today", reviewMark:"Mark as Reviewed", reviewed:"Reviewed",
+  neverReviewed:"Never reviewed", overdueShort:"d overdue", dueToday:"Due today", dueTomorrow:"Due tomorrow", inDays:"In # days",
+  fmtToday:"Today", fmtTomorrow:"Tomorrow", fmtDays:"In # days", fmtWeeks:"In # weeks", fmtMonths:"In # months",
+  noDocsTtl:"No documents yet", noDocsSub:"Create your first Islamic study note.<br>All documents are saved locally in your browser.",
+  nothingTtl:"Nothing found", nothingSub:"Try a different title, author, science, or keyword.",
+  resultsFor:'result|s for', noResultsFor:"No results for", dueReview:"Due for Review", untagged:"Untagged",
+  untitled:"Untitled Document", open:"Open ↗", justNow:"Just now", mAgo:"m ago", hAgo:"h ago", dAgo:"d ago",
+  noExport:"No documents to export", preparing:"Preparing", forPdf:"for PDF…", backupExported:"Backup exported — keep this file safe",
+  imported:"Imported", docDeleted:"Document deleted", clickBlockFirst:"Tap a block first", tagsCleared:"Tags cleared", sciSaved:"saved",
+  nextReview:"Next review:", switchedTo:"→", saveFailed:"⚠ Save failed — export a backup",
+  confDel:'Delete "#"?\nThis cannot be undone.',
+  alertQuota:"Storage is full — this note may not be saved.\n\nExport a backup, then remove a few old documents to free space.",
+  alertSave:"Saving failed in this browser (private mode can block storage).\n\nExport a backup so your work is not lost.",
+  alertImport:"Invalid backup file. Use a file exported from this app.",
+  lastReviewed:"Last reviewed:", rep:"Rep", ease:"Ease", untitledShort:"Untitled"},
+ de:{tagline:"Islamische Studiennotizen",
+  obWrite:"Schreiben & ordnen", obReview:"Wiederholen & behalten", obBackup:"Sichere deine Notizen",
+  obWriteP:'Vier farbcodierte Blöcke — <strong style="color:#D4A015;">Āyah</strong>, <strong style="color:#3A9858;">Ḥadīth</strong>, <strong style="color:#4878C8;">Athar</strong>, Notiz — auf druckbaren A4-Seiten.',
+  obReviewP:"Verteilte Wiederholung plant jede Notiz zur Wiederholung, bevor du sie vergisst.",
+  obBackupP:'Notizen liegen nur in diesem Browser — <strong>exportiere regelmäßig ein Backup</strong>.',
+  begin:"Studium beginnen", obNote:"Diese Anleitung jederzeit über die Schaltfläche „Über“ in der Bibliothek erneut öffnen.",
+  exportPdf:"Alle als PDF exportieren", exportBackup:"Backup exportieren", importBackup:"Backup importieren", about:"Über", newDoc:"Neues Dokument",
+  searchPh:"Nach Titel, Autor, Kapitel, Wissenschaft oder Text suchen…",
+  lsWarn:'Notizen werden nur in diesem Browser gespeichert — <strong>exportiere regelmäßig ein Backup</strong>, um Datenverlust zu vermeiden.',
+  back:"← Bibliothek", done:"Fertig",
+  secDoc:"Dokument", secTypes:'Notiztypen &nbsp;·&nbsp; Klick oder Alt+Taste', secActions:"Aktionen", secShort:"Tastenkürzel",
+  fTitle:"Buchtitel", fAuthor:"Autor", fChapter:"Kapitel / Abschnitt", fLayout:"Layout der ersten Seite", fPageNum:"Welche Seitenzahl ist das?",
+  phTitle:"z. B. Kitāb at-Tawḥīd", phAuthor:"z. B. Ibn ʿAbd al-Wahhāb", phChapter:"z. B. Kapitel 1",
+  pgTitle:"Titelseite", pgTitleSub:"Verzierter Kopf", pgCont:"Fortsetzung", pgContSub:"Minimaler Kopf",
+  lsAyah:"Koranvers", lsHadith:"Prophetische Überlieferung", lsAthar:"Gelehrtenkommentar", lsNote:"Eigene Analyse", lsTitle:"Kapitel-/Abschnittsüberschrift",
+  active:"Aktiv:\u00a0", addBlock:"Block hinzufügen", printPdf:"Drucken / als PDF speichern", drTags:"Wissenschaften / Tags", drReview:"Als wiederholt markieren",
+  scNew:"Neuer Block", scAdd:"Block hinzufügen (überall)", scBreak:"Zeilenumbruch", scDel:"Leeren löschen", scReorder:"Umordnen", scCycle:"Typ wechseln (Maus)",
+  sbFoot:"Alt = Option am Mac · بارك الله فيك",
+  phDocTitle:"Buchtitel", phDocAuthor:"Autor", phDocChapter:"Kapitel",
+  tagTtl:"Welche islamischen Wissenschaften behandelt dieses Dokument?", tagSub:"Wähle alles Zutreffende — du kannst dies jederzeit über die Schaltfläche ⟐ Wissenschaften ändern.",
+  tagSkip:"Vorerst überspringen", tagSave:"Wissenschaften speichern →",
+  revQ:"Wie gut hast du diesen Stoff behalten?", revInfoFirst:"Erste Wiederholung — bewerte dein Können ehrlich.",
+  rForgot:"Vergessen", rHard:"Schwer", rGood:"Gut", rEasy:"Leicht", cancel:"Abbrechen", page:"Seite",
+  saving:"Speichern…", saved:"Gespeichert", unsaved:"Nicht gespeichert",
+  sciOne:"Wissenschaft", sciMany:"Wissenschaften", blockOne:"Block", blockMany:"Blöcke",
+  reviewOverdue:"Überfällig", reviewDueToday:"Heute fällig", reviewMark:"Als wiederholt markieren", reviewed:"Wiederholt",
+  neverReviewed:"Noch nie wiederholt", overdueShort:" T überfällig", dueToday:"Heute fällig", dueTomorrow:"Morgen fällig", inDays:"In # Tagen",
+  fmtToday:"Heute", fmtTomorrow:"Morgen", fmtDays:"In # Tagen", fmtWeeks:"In # Wochen", fmtMonths:"In # Monaten",
+  noDocsTtl:"Noch keine Dokumente", noDocsSub:"Erstelle deine erste islamische Studiennotiz.<br>Alle Dokumente werden lokal in deinem Browser gespeichert.",
+  nothingTtl:"Nichts gefunden", nothingSub:"Versuche einen anderen Titel, Autor, eine Wissenschaft oder ein Stichwort.",
+  resultsFor:'Ergebnis|se für', noResultsFor:"Keine Ergebnisse für", dueReview:"Zur Wiederholung fällig", untagged:"Ohne Tag",
+  untitled:"Unbenanntes Dokument", open:"Öffnen ↗", justNow:"Gerade eben", mAgo:" Min.", hAgo:" Std.", dAgo:" T",
+  noExport:"Keine Dokumente zum Exportieren", preparing:"Bereite", forPdf:"für PDF vor…", backupExported:"Backup exportiert — bewahre diese Datei sicher auf",
+  imported:"Importiert", docDeleted:"Dokument gelöscht", clickBlockFirst:"Tippe zuerst auf einen Block", tagsCleared:"Tags entfernt", sciSaved:"gespeichert",
+  nextReview:"Nächste Wiederholung:", switchedTo:"→", saveFailed:"⚠ Speichern fehlgeschlagen — exportiere ein Backup",
+  confDel:'„#“ löschen?\nDies kann nicht rückgängig gemacht werden.',
+  alertQuota:"Der Speicher ist voll — diese Notiz wird evtl. nicht gespeichert.\n\nExportiere ein Backup und entferne dann ein paar alte Dokumente, um Platz zu schaffen.",
+  alertSave:"Speichern in diesem Browser fehlgeschlagen (privater Modus kann Speicher blockieren).\n\nExportiere ein Backup, damit deine Arbeit nicht verloren geht.",
+  alertImport:"Ungültige Backup-Datei. Verwende eine aus dieser App exportierte Datei.",
+  lastReviewed:"Zuletzt wiederholt:", rep:"Wdh.", ease:"Faktor", untitledShort:"Unbenannt"}
+};
+function tr(k){ return (T[LANG]&&T[LANG][k]!=null)?T[LANG][k]:(T.en[k]!=null?T.en[k]:k); }
+
+
 /* ══════════════════════════════════
    PRINT FIX — JavaScript beforeprint
    ──────────────────────────────────
@@ -895,8 +1012,8 @@ window.addEventListener('afterprint', () => {
 ══════════════════════════════════ */
 function exportAllAsPDF(){
   const docs = DB.all();
-  if(!docs.length){ showToast('No documents to export'); return; }
-  showToast('Preparing ' + docs.length + ' document' + (docs.length!==1?'s':'') + ' for PDF…');
+  if(!docs.length){ showToast(tr('noExport')); return; }
+  showToast(tr('preparing')+' '+docs.length+' '+(LANG==='de'?(docs.length!==1?'Dokumente':'Dokument'):(docs.length!==1?'documents':'document'))+' '+tr('forPdf'));
 
   setTimeout(()=>{
     document.getElementById('print-frame')?.remove();
@@ -972,9 +1089,9 @@ function persist(arr){
       _storageWarned=true;
       const quota = err && (err.name==='QuotaExceededError' || err.code===22 || err.code===1014);
       alert(quota
-        ? 'Storage is full — this note may not be saved.\n\nExport a backup, then remove a few old documents to free space.'
-        : 'Saving failed in this browser (private mode can block storage).\n\nExport a backup so your work is not lost.');
-      try{ showToast('⚠ Save failed — export a backup'); }catch(_){}
+        ? tr('alertQuota')
+        : tr('alertSave'));
+      try{ showToast(tr('saveFailed')); }catch(_){}
     }
     return false;
   }
@@ -1026,26 +1143,26 @@ const SM2 = {
     return d<0?'over':d===0?'due':'ok';
   },
   label(sr){
-    if(!sr.nextReview) return 'Never reviewed';
+    if(!sr.nextReview) return tr('neverReviewed');
     const d=this.dayDelta(sr.nextReview);
-    if(d<0) return Math.abs(d)+(Math.abs(d)===1?' day overdue':' days overdue');
-    if(d===0) return 'Due today';
-    if(d===1) return 'Due tomorrow';
-    return 'In '+d+' days';
+    if(d<0){const n=Math.abs(d); return LANG==='de'?(n+(n===1?' Tag überfällig':' Tage überfällig')):(n+(n===1?' day overdue':' days overdue'));}
+    if(d===0) return tr('dueToday');
+    if(d===1) return tr('dueTomorrow');
+    return tr('inDays').replace('#',d);
   },
   fmt(days){
-    if(days<=0) return 'Today';
-    if(days===1) return 'Tomorrow';
-    if(days<14)  return 'In '+days+' days';
-    if(days<60)  return 'In '+Math.round(days/7)+' weeks';
-    return 'In '+Math.round(days/30)+' months';
+    if(days<=0) return tr('fmtToday');
+    if(days===1) return tr('fmtTomorrow');
+    if(days<14)  return tr('fmtDays').replace('#',days);
+    if(days<60)  return tr('fmtWeeks').replace('#',Math.round(days/7));
+    return tr('fmtMonths').replace('#',Math.round(days/30));
   }
 };
 
 /* ══════════════════════════════════
    STATE
 ══════════════════════════════════ */
-let currentDocId=null, reviewDocId=null, saveTimer=null;
+let currentDocId=null, reviewDocId=null, saveTimer=null, leaveAfterReview=false;
 
 /* ══════════════════════════════════
    ONBOARDING
@@ -1136,9 +1253,9 @@ function renderLibrary(){
         <line x1="68" y1="34" x2="96" y2="34" stroke="#243628" stroke-width="1" opacity=".5"/>
         <line x1="68" y1="42" x2="92" y2="42" stroke="#243628" stroke-width="1" opacity=".3"/>
       </svg>
-      <div class="empty-ttl">No documents yet</div>
-      <div class="empty-sub">Create your first Islamic study note.<br>All documents are saved locally in your browser.</div>
-      <button class="btn-new" style="margin:0 auto;" onclick="newDoc()">New Document</button>
+      <div class="empty-ttl">${tr('noDocsTtl')}</div>
+      <div class="empty-sub">${tr('noDocsSub')}</div>
+      <button class="btn-new" style="margin:0 auto;" onclick="newDoc()">${tr('newDoc')}</button>
     </div>`;
     return;
   }
@@ -1151,8 +1268,8 @@ function renderLibrary(){
     scored.sort((a,b)=> b.s-a.s || b.d.updatedAt-a.d.updatedAt);
     const meta=document.createElement('div'); meta.className='search-meta';
     meta.innerHTML=scored.length
-      ? `<em>${scored.length}</em> result${scored.length!==1?'s':''} for “${esc(q)}”`
-      : `No results for “${esc(q)}”`;
+      ? `<em>${scored.length}</em> ${LANG==='de'?(scored.length!==1?'Ergebnisse':'Ergebnis'):(scored.length!==1?'results':'result')} ${LANG==='de'?'für':'for'} “${esc(q)}”`
+      : `${tr('noResultsFor')} “${esc(q)}”`;
     body.appendChild(meta);
     if(scored.length){
       const g=document.createElement('div'); g.className='cards-grid';
@@ -1160,7 +1277,7 @@ function renderLibrary(){
       body.appendChild(g);
     } else {
       const es=document.createElement('div'); es.className='empty-state';
-      es.innerHTML=`<div class="empty-ttl">Nothing found</div><div class="empty-sub">Try a different title, author, science, or keyword.</div>`;
+      es.innerHTML=`<div class="empty-ttl">${tr('nothingTtl')}</div><div class="empty-sub">${tr('nothingSub')}</div>`;
       body.appendChild(es);
     }
     return;
@@ -1170,7 +1287,7 @@ function renderLibrary(){
   const due=all.filter(d=>['over','due'].includes(SM2.status(d.sr)));
   if(due.length){
     const sec=document.createElement('div'); sec.className='due-sec';
-    sec.innerHTML=`<div class="sec-lbl"><span class="due-dot"></span>Due for Review <span class="sec-count">(${due.length})</span></div>`;
+    sec.innerHTML=`<div class="sec-lbl"><span class="due-dot"></span>${tr('dueReview')} <span class="sec-count">(${due.length})</span></div>`;
     const g=document.createElement('div'); g.className='cards-grid';
     [...due].sort(sortFn).forEach(d=>g.appendChild(mkCard(d)));
     sec.appendChild(g); body.appendChild(sec);
@@ -1201,7 +1318,7 @@ function renderLibrary(){
   /* Untagged fallback section */
   if(untagged.length){
     const sec=document.createElement('div'); sec.className='sci-sec';
-    sec.innerHTML=`<div class="sec-lbl">Untagged<span class="sec-count"> (${untagged.length})</span></div>`;
+    sec.innerHTML=`<div class="sec-lbl">${tr('untagged')}<span class="sec-count"> (${untagged.length})</span></div>`;
     const g=document.createElement('div'); g.className='cards-grid';
     [...untagged].sort(sortFn).forEach(d=>g.appendChild(mkCard(d)));
     sec.appendChild(g); body.appendChild(sec);
@@ -1223,30 +1340,30 @@ function mkCard(doc){
   const bi={new:'b-new',due:'b-due',over:'b-over',ok:'b-ok'}, icon={new:'◈',due:'◉',over:'⊗',ok:'✓'};
   const tagHTML=(doc.tags||[]).map(id=>{ const s=SCIENCES.find(x=>x.id===id); return s?`<span class="ctag">${s.label}</span>`:''; }).join('');
   const tagsRow=tagHTML?`<div class="card-tags">${tagHTML}</div>`:'';
-  card.insertAdjacentHTML('beforeend',`<div class="card-body"><div class="card-title ${!doc.title?'no-tit':''}">${esc(doc.title)||'Untitled Document'}</div><div class="card-author">${esc(doc.author)||'&nbsp;'}</div>${tagsRow}<div class="card-meta">${doc.chapter?esc(doc.chapter)+' · ':''}${doc.blocks.length} block${doc.blocks.length!==1?'s':''} · ${tAgo(doc.updatedAt)}</div><span class="sr-badge ${bi[status]}">${icon[status]} ${SM2.label(doc.sr)}</span></div><div class="card-foot"><button class="card-open" data-id="${doc.id}">Open ↗</button><button class="card-del" data-id="${doc.id}" title="Delete">✕</button></div>`);
+  card.insertAdjacentHTML('beforeend',`<div class="card-body"><div class="card-title ${!doc.title?'no-tit':''}">${esc(doc.title)||tr('untitled')}</div><div class="card-author">${esc(doc.author)||'&nbsp;'}</div>${tagsRow}<div class="card-meta">${doc.chapter?esc(doc.chapter)+' · ':''}${doc.blocks.length} ${doc.blocks.length!==1?tr('blockMany'):tr('blockOne')} · ${tAgo(doc.updatedAt)}</div><span class="sr-badge ${bi[status]}">${icon[status]} ${SM2.label(doc.sr)}</span></div><div class="card-foot"><button class="card-open" data-id="${doc.id}">${tr('open')}</button><button class="card-del" data-id="${doc.id}" title="Delete">✕</button></div>`);
   card.querySelector('.card-open').addEventListener('click',e=>{e.stopPropagation();showEditor(doc.id);});
   card.querySelector('.card-del').addEventListener('click', e=>{e.stopPropagation();delPrompt(doc.id,doc.title);});
   card.addEventListener('click',()=>showEditor(doc.id));
   return card;
 }
-function delPrompt(id,title){ if(confirm(`Delete "${title||'Untitled Document'}"?\nThis cannot be undone.`)){ DB.del(id); showToast('Document deleted'); renderLibrary(); } }
-function tAgo(ts){ const s=(Date.now()-ts)/1000; if(s<60) return 'Just now'; if(s<3600) return Math.floor(s/60)+'m ago'; if(s<86400) return Math.floor(s/3600)+'h ago'; if(s<604800) return Math.floor(s/86400)+'d ago'; return new Date(ts).toLocaleDateString(); }
+function delPrompt(id,title){ if(confirm(tr('confDel').replace('#', title||tr('untitled')))){ DB.del(id); showToast(tr('docDeleted')); renderLibrary(); } }
+function tAgo(ts){ const s=(Date.now()-ts)/1000; if(s<60) return tr('justNow'); if(s<3600) return Math.floor(s/60)+tr('mAgo'); if(s<86400) return Math.floor(s/3600)+tr('hAgo'); if(s<604800) return Math.floor(s/86400)+tr('dAgo'); return new Date(ts).toLocaleDateString(); }
 function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
 /* ══════════════════════════════════
    EXPORT / IMPORT
 ══════════════════════════════════ */
 document.getElementById('btn-export').addEventListener('click',()=>{
-  const docs=DB.all(); if(!docs.length){showToast('No documents to export');return;}
+  const docs=DB.all(); if(!docs.length){showToast(tr('noExport'));return;}
   const blob=new Blob([JSON.stringify(docs,null,2)],{type:'application/json'}), url=URL.createObjectURL(blob), a=document.createElement('a');
   a.href=url; a.download='fawaaid-backup-'+new Date().toISOString().split('T')[0]+'.json'; a.click(); URL.revokeObjectURL(url);
-  showToast('Backup exported — keep this file safe');
+  showToast(tr('backupExported'));
 });
 const impInp=document.getElementById('imp-inp');
 document.getElementById('btn-import').addEventListener('click',()=>impInp.click());
 impInp.addEventListener('change',e=>{
   const file=e.target.files[0]; if(!file) return;
-  const r=new FileReader(); r.onload=ev=>{ try{ const docs=JSON.parse(ev.target.result); if(!Array.isArray(docs)) throw 0; const ex=new Set(DB.all().map(d=>d.id)); let added=0; docs.forEach(d=>{ if(d.id&&d.blocks!==undefined&&!ex.has(d.id)){DB.save(d);added++;} }); showToast(`Imported ${added} document${added!==1?'s':''}`); renderLibrary(); }catch(_){ alert('Invalid backup file. Use a file exported from this app.'); } }; r.readAsText(file); impInp.value='';
+  const r=new FileReader(); r.onload=ev=>{ try{ const docs=JSON.parse(ev.target.result); if(!Array.isArray(docs)) throw 0; const ex=new Set(DB.all().map(d=>d.id)); let added=0; docs.forEach(d=>{ if(d.id&&d.blocks!==undefined&&!ex.has(d.id)){DB.save(d);added++;} }); showToast(tr('imported')+' '+added+' '+(LANG==='de'?(added!==1?'Dokumente':'Dokument'):(added!==1?'documents':'document'))); renderLibrary(); }catch(_){ alert(tr('alertImport')); } }; r.readAsText(file); impInp.value='';
 });
 
 /* ══════════════════════════════════
@@ -1268,7 +1385,7 @@ const pages=document.getElementById('pages'), badge=document.getElementById('hk-
 /* ══════════════════════════════════
    SYNC
 ══════════════════════════════════ */
-function syncMeta(){ const t=gT(dTitle); document.querySelectorAll('.pft').forEach(el=>el.textContent=t); document.querySelectorAll('.pmh').forEach(el=>el.textContent=t); document.querySelectorAll('.pmh-sep').forEach(el=>el.style.display=t?'':'none'); const n=document.getElementById('edt-name'); if(n) n.textContent=t||'Untitled'; }
+function syncMeta(){ const t=gT(dTitle); document.querySelectorAll('.pft').forEach(el=>el.textContent=t); document.querySelectorAll('.pmh').forEach(el=>el.textContent=t); document.querySelectorAll('.pmh-sep').forEach(el=>el.style.display=t?'':'none'); const n=document.getElementById('edt-name'); if(n) n.textContent=t||tr('untitledShort'); }
 function syncSep(){ mSep.style.display=(gT(dAuthor)&&gT(dChap))?'':'none'; }
 function syncLabels(){ document.querySelectorAll('.a4').forEach(a=>{ const n=parseInt(a.dataset.page); a.querySelectorAll('.pg-lbl').forEach(el=>el.textContent=pgLbl(n)); }); }
 iTitle.addEventListener('input', ()=>{ sT(dTitle, iTitle.value);  syncMeta(); scheduleSave(); });
@@ -1328,38 +1445,47 @@ function saveCurrentDoc(){
   DB.save(doc); setSaveState('saved'); updateEditorBar(doc);
 }
 function scheduleSave(){ setSaveState('saving'); clearTimeout(saveTimer); saveTimer=setTimeout(saveCurrentDoc,1200); }
-function setSaveState(s){ const p=document.getElementById('save-pill'),l=document.getElementById('save-lbl'); p.className='save-pill '+s; l.textContent=s==='saving'?'Saving…':s==='saved'?'Saved':'Unsaved'; }
+function setSaveState(s){ const p=document.getElementById('save-pill'),l=document.getElementById('save-lbl'); p.className='save-pill '+s; l.textContent=s==='saving'?tr('saving'):s==='saved'?tr('saved'):tr('unsaved'); }
 function updateEditorBar(doc, lastQuality=null){
-  document.getElementById('edt-name').textContent=doc.title||'Untitled';
+  document.getElementById('edt-name').textContent=doc.title||tr('untitledShort');
   const status=SM2.status(doc.sr), btn=document.getElementById('btn-review'), lbl=document.getElementById('review-lbl');
   btn.className='btn-review';
   /* If a rating was just submitted, show that rating's icon */
   if(lastQuality!==null){
     const icons={0:'○',3:'◐',4:'●',5:'✓'};
-    lbl.textContent=(icons[lastQuality]||'◎')+' Reviewed  ·  '+SM2.label(doc.sr);
+    lbl.textContent=(icons[lastQuality]||'◎')+' '+tr('reviewed')+'  ·  '+SM2.label(doc.sr);
     return;
   }
-  if(status==='over'){btn.classList.add('is-over');lbl.textContent='⊗ Overdue — '+SM2.label(doc.sr);}
-  else if(status==='due'){btn.classList.add('is-due');lbl.textContent='◉ Review Due Today';}
-  else if(status==='ok'){lbl.textContent='◎ Mark as Reviewed  ·  '+SM2.label(doc.sr);}
-  else{lbl.textContent='◎ Mark as Reviewed';}
+  if(status==='over'){btn.classList.add('is-over');lbl.textContent='⊗ '+tr('reviewOverdue')+' — '+SM2.label(doc.sr);}
+  else if(status==='due'){btn.classList.add('is-due');lbl.textContent='◉ '+tr('reviewDueToday');}
+  else if(status==='ok'){lbl.textContent='◎ '+tr('reviewMark')+'  ·  '+SM2.label(doc.sr);}
+  else{lbl.textContent='◎ '+tr('reviewMark');}
 }
 document.getElementById('edt-back').addEventListener('click',()=>{
   clearTimeout(saveTimer); saveCurrentDoc();
   const doc = DB.get(currentDocId);
-  // Show tag modal if this is the first time closing (tagsAsked not set)
+  // First time closing: ask for the science tags, then offer the review.
   if(doc && !doc.tagsAsked){
     openTagModal(doc.tags||[], tags=>{
       const d = DB.get(currentDocId); if(!d) return;
       if(tags!==null) d.tags = tags;
       d.tagsAsked = true; d.updatedAt = Date.now();
       DB.save(d);
-      showLibrary();
+      maybeReviewThenLeave(true);
     });
   } else {
-    showLibrary();
+    maybeReviewThenLeave(false);
   }
 });
+/* Prompt the review automatically: on the first close, and afterwards whenever the
+   document is due or overdue. Empty documents are never prompted. */
+function maybeReviewThenLeave(firstClose){
+  const d = DB.get(currentDocId);
+  if(!d || !(d.blocks && d.blocks.length)){ showLibrary(); return; }
+  const st = SM2.status(d.sr);
+  if(firstClose || st==='over' || st==='due'){ leaveAfterReview=true; openReviewModal(currentDocId); }
+  else showLibrary();
+}
 
 /* ══════════════════════════════════
    BLOCKS
@@ -1407,7 +1533,7 @@ function onKey(e,b){ const ed=e.target; if(e.key==='Enter'&&!e.shiftKey){e.preve
 const isEmpty=el=>el.textContent.trim()===''&&el.innerHTML.replace(/<br\s*\/?>/gi,'').trim()==='';
 
 /* Legend — mousedown+preventDefault keeps focus */
-document.getElementById('legend').addEventListener('mousedown',e=>{ const item=e.target.closest('.leg'); if(!item) return; e.preventDefault(); const t=blockTarget(); if(t){ applyType(t,item.dataset.type); closeDrawer(); focusB(t); } else showToast('Tap a block first'); });
+document.getElementById('legend').addEventListener('mousedown',e=>{ const item=e.target.closest('.leg'); if(!item) return; e.preventDefault(); const t=blockTarget(); if(t){ applyType(t,item.dataset.type); closeDrawer(); focusB(t); } else showToast(tr('clickBlockFirst')); });
 document.getElementById('btn-add').addEventListener('click',()=>{ const t=blockTarget(); closeDrawer(); focusB(insertB('note','',t)); });
 document.getElementById('btn-print').addEventListener('click',()=>window.print());
 
@@ -1508,7 +1634,7 @@ document.getElementById('btn-tags').addEventListener('click', ()=>{
     d.tags = tags; d.tagsAsked = true; d.updatedAt = Date.now();
     DB.save(d);
     updateTagsButton(tags);
-    showToast(tags.length ? `${tags.length} science${tags.length!==1?'s':''} saved` : 'Tags cleared');
+    showToast(tags.length ? (tags.length+' '+(tags.length!==1?tr('sciMany'):tr('sciOne'))+' '+tr('sciSaved')) : tr('tagsCleared'));
   });
 });
 
@@ -1517,10 +1643,10 @@ function updateTagsButton(tags){
   if(!btn) return;
   if(tags && tags.length){
     btn.classList.add('has-tags');
-    btn.textContent = '⟐ ' + tags.length + ' Science' + (tags.length!==1?'s':'');
+    btn.textContent = '⟐ ' + tags.length + ' ' + (tags.length!==1?tr('sciMany'):tr('sciOne'));
   } else {
     btn.classList.remove('has-tags');
-    btn.textContent = '⟐ Sciences';
+    btn.textContent = '⟐ '+tr('sciMany');
   }
 }
 
@@ -1593,22 +1719,23 @@ function mkPage(n){
 document.getElementById('btn-review').addEventListener('click',()=>{ if(!currentDocId) return; clearTimeout(saveTimer); saveCurrentDoc(); openReviewModal(currentDocId); });
 function openReviewModal(id){
   reviewDocId=id; const doc=DB.get(id); if(!doc) return;
-  document.getElementById('rev-title').textContent=doc.title||'Untitled Document';
+  document.getElementById('rev-title').textContent=doc.title||tr('untitled');
   const info=document.getElementById('rev-info');
-  if(!doc.sr.lastReview) info.textContent='First review — rate your confidence honestly.';
-  else info.innerHTML=`Last reviewed: <strong>${new Date(doc.sr.lastReview).toLocaleDateString(undefined,{month:'short',day:'numeric'})}</strong> · Rep #${doc.sr.repetitions} · Ease: ${doc.sr.easeFactor.toFixed(2)}`;
+  if(!doc.sr.lastReview) info.textContent=tr('revInfoFirst');
+  else info.innerHTML=`${tr('lastReviewed')} <strong>${new Date(doc.sr.lastReview).toLocaleDateString(LANG==='de'?'de-DE':undefined,{month:'short',day:'numeric'})}</strong> · ${tr('rep')} #${doc.sr.repetitions} · ${tr('ease')}: ${doc.sr.easeFactor.toFixed(2)}`;
   [0,3,4,5].forEach(q=>{ const next=SM2.schedule({...doc.sr},q); document.getElementById('ri-'+q).textContent=SM2.fmt(next.interval); });
   document.getElementById('rev-modal').classList.add('open');
 }
 document.querySelectorAll('.rating-btn').forEach(btn=>btn.addEventListener('click',()=>submitReview(parseInt(btn.dataset.q))));
-document.getElementById('rev-cancel').addEventListener('click',()=>document.getElementById('rev-modal').classList.remove('open'));
-document.getElementById('rev-modal').addEventListener('click',e=>{ if(e.target===document.getElementById('rev-modal')) document.getElementById('rev-modal').classList.remove('open'); });
+document.getElementById('rev-cancel').addEventListener('click',()=>{ document.getElementById('rev-modal').classList.remove('open'); if(leaveAfterReview){ leaveAfterReview=false; showLibrary(); } });
+document.getElementById('rev-modal').addEventListener('click',e=>{ if(e.target===document.getElementById('rev-modal')){ document.getElementById('rev-modal').classList.remove('open'); if(leaveAfterReview){ leaveAfterReview=false; showLibrary(); } } });
 function submitReview(q){
   const doc=DB.get(reviewDocId); if(!doc) return;
   doc.sr=SM2.schedule({...doc.sr},q); doc.updatedAt=Date.now(); DB.save(doc);
   document.getElementById('rev-modal').classList.remove('open');
-  showToast('✓ Next review: '+SM2.fmt(doc.sr.interval));
+  showToast('✓ '+tr('nextReview')+' '+SM2.fmt(doc.sr.interval));
   updateEditorBar(doc, q);
+  if(leaveAfterReview){ leaveAfterReview=false; showLibrary(); }
 }
 
 /* ══════════════════════════════════
@@ -1680,6 +1807,57 @@ function syncMobilePageUI(){}
 
 /* Initialise mode once on load */
 setMode();
+
+/* ════════════════ apply language to the whole UI ════════════════ */
+function applyLang(lang){
+  if(lang==='en'||lang==='de'){ LANG=lang; try{localStorage.setItem('fawaaid-lang',lang);}catch(_){} }
+  const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+  document.documentElement.lang=LANG;
+  $$('.lang-tog button').forEach(b=>b.classList.toggle('active', b.dataset.l===LANG));
+  $$('.ob-tagline,.lib-sub').forEach(e=>e.textContent=tr('tagline'));
+  const sh=$$('.ob-sh'),shK=['obWrite','obReview','obBackup']; sh.forEach((e,i)=>{ if(e.lastChild&&e.lastChild.nodeType===3)e.lastChild.nodeValue=tr(shK[i]); });
+  const ps=$$('.ob-p'),pK=['obWriteP','obReviewP','obBackupP']; ps.forEach((e,i)=>{ if(pK[i])e.innerHTML=tr(pK[i]); });
+  const byId=id=>document.getElementById(id);
+  const setTxt=(id,k)=>{const e=byId(id); if(e)e.textContent=tr(k);};
+  const setHtml=(sel,k)=>{const e=$(sel); if(e)e.innerHTML=tr(k);};
+  const setPh=(id,k)=>{const e=byId(id); if(e)e.placeholder=tr(k);};
+  const setBtn=(id,k,sp)=>{const e=byId(id); if(e&&e.lastChild&&e.lastChild.nodeType===3)e.lastChild.nodeValue=(sp?' ':'')+tr(k);};
+  setTxt('ob-start','begin'); { const on=$('.ob-note'); if(on)on.textContent=tr('obNote'); }
+  setBtn('btn-export-pdf','exportPdf'); setBtn('btn-export','exportBackup'); setBtn('btn-import','importBackup'); setBtn('btn-about','about'); setBtn('btn-new-doc','newDoc');
+  setPh('lib-q','searchPh');
+  { const lw=$('#ls-warn span:nth-of-type(2)'); if(lw)lw.innerHTML=tr('lsWarn'); }
+  setTxt('edt-back','back');
+  { const sbc=byId('sb-close'); if(sbc)sbc.textContent='✕ \u00a0'+tr('done'); }
+  { const tt=$$('.sb-ttl'); if(tt[0])tt[0].textContent=tr('secDoc'); if(tt[1])tt[1].innerHTML=tr('secTypes'); if(tt[2])tt[2].textContent=tr('secActions'); if(tt[3])tt[3].textContent=tr('secShort'); }
+  { const e=$('label[for="i-title"]'); if(e)e.textContent=tr('fTitle'); }
+  { const e=$('label[for="i-author"]'); if(e)e.textContent=tr('fAuthor'); }
+  { const e=$('label[for="i-chapter"]'); if(e)e.textContent=tr('fChapter'); }
+  { const p=$('.pgtype'); if(p&&p.previousElementSibling)p.previousElementSibling.textContent=tr('fLayout'); }
+  { const e=$('#pg-row label'); if(e)e.textContent=tr('fPageNum'); }
+  setPh('i-title','phTitle'); setPh('i-author','phAuthor'); setPh('i-chapter','phChapter');
+  { const b=byId('pgt-ch'); if(b){ if(b.firstChild&&b.firstChild.nodeType===3)b.firstChild.nodeValue=tr('pgTitle'); const s=b.querySelector('.pgt-sub'); if(s)s.textContent=tr('pgTitleSub'); } }
+  { const b=byId('pgt-co'); if(b){ if(b.firstChild&&b.firstChild.nodeType===3)b.firstChild.nodeValue=tr('pgCont'); const s=b.querySelector('.pgt-sub'); if(s)s.textContent=tr('pgContSub'); } }
+  { const m={ayah:'lsAyah',hadith:'lsHadith',athar:'lsAthar',note:'lsNote',title:'lsTitle'}; Object.keys(m).forEach(ty=>{const e=$('.leg[data-type="'+ty+'"] .ls'); if(e)e.textContent=tr(m[ty]);}); }
+  { const c=$('.cur-lbl'); if(c)c.textContent=tr('active'); }
+  setBtn('btn-add','addBlock',true); setBtn('btn-print','printPdf',true); setBtn('dr-tags','drTags',true); setBtn('dr-review','drReview',true);
+  { const sc=$$('.scts .sct-l'),scK=['scNew','scAdd','scBreak','scDel','scReorder',null,null,null,null,null,'scCycle']; sc.forEach((e,i)=>{ if(scK[i])e.textContent=tr(scK[i]); }); }
+  setHtml('.sb-foot','sbFoot');
+  { const d=(id,k)=>{const e=byId(id); if(e)e.setAttribute('data-ph',tr(k));}; d('doc-title','phDocTitle'); d('doc-author','phDocAuthor'); d('doc-chapter','phDocChapter'); }
+  setHtml('.tag-box-ttl','tagTtl'); setHtml('.tag-box-sub','tagSub'); setTxt('tag-skip','tagSkip'); setTxt('tag-save','tagSave');
+  { const rq=$('.rev-q'); if(rq)rq.textContent=tr('revQ'); }
+  { const rl=$$('.rating-btn .r-label'),k=['rForgot','rHard','rGood','rEasy']; rl.forEach((e,i)=>{ if(k[i])e.textContent=tr(k[i]); }); }
+  setTxt('rev-cancel','cancel');
+  /* refresh dynamic views */
+  try{
+    const sp=byId('save-pill'); if(sp) setSaveState(sp.classList.contains('saving')?'saving':'saved');
+    if(typeof currentDocId!=='undefined' && currentDocId){ const d=DB.get(currentDocId); if(d){ updateTagsButton(d.tags||[]); updateEditorBar(d); } }
+    syncLabels();
+    if(!byId('lib').classList.contains('off')) renderLibrary();
+  }catch(_){}
+}
+document.addEventListener('click',e=>{ const b=e.target.closest?e.target.closest('.lang-tog button'):null; if(b) applyLang(b.dataset.l); });
+applyLang();
+
 </script>
 </body>
 </html>
